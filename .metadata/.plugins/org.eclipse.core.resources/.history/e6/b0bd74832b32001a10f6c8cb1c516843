@@ -21,7 +21,7 @@ public class HallRepository {
 		return halls;
 	}
 	
-	public  void addTohall(int hall_id, String hall_name, int seats) throws SQLException {
+	public  void addToCart(int hall_id, String hall_name, int seats) throws SQLException {
 
         Connection connection = DBconnection.getConnection();
         Statement statement = connection.createStatement();
