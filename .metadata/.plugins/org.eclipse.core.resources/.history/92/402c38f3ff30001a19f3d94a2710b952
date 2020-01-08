@@ -1,0 +1,11 @@
+package nccs.omts;
+
+import repository.*;
+
+public class OmtsMain {
+
+	public static void main(String[] args) {
+			
+	}
+
+}

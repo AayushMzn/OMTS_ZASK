@@ -1,0 +1,18 @@
+package model;
+
+public class Transaction {
+	private int transactions_id;
+	private int	booking_id;
+	private int	customer_id;
+	private int transactions_date;
+	private int	price;
+	public Transaction(int transactions_id, int booking_id, int customer_id, int transactions_date, int price) {
+		super();
+		this.transactions_id = transactions_id;
+		this.booking_id = booking_id;
+		this.customer_id = customer_id;
+		this.transactions_date = transactions_date;
+		this.price = price;
+	}
+	
+}

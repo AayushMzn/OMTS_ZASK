@@ -6,6 +6,7 @@ import java.util.*;
 import nccs.omts.DBconnection;
 import nccs.omts.model.Hall;
 
+
 public class HallRepository {
 	public List<Hall> getHall() throws SQLException{
 		Connection connection = DBconnection.getConnection();
@@ -19,4 +20,11 @@ public class HallRepository {
 		}
 		return halls;
 	}
+	
+	public  void addToCart(int hall_id, String hall_name, int seats) throws SQLException {
+
+        Connection connection = DBconnection.getConnection();
+        Statement statement = connection.createStatement();
+        statement.executeUpdate("INSERT INTO hall values(" + hall_id + ", " + hall_name + ", " + seats + ")");
+    }
 }
