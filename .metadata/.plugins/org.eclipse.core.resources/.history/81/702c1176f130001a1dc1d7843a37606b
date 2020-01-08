@@ -1,0 +1,8 @@
+package model;
+
+public class Shows {
+	private int show_id;
+	private int hall_id;
+	private int movie_id;
+	private int schedule_id;
+}
