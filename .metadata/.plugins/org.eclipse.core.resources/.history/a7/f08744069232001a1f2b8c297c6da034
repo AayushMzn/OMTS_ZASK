@@ -1,0 +1,5 @@
+package nccs.omts.repository;
+
+public class TicketRepository {
+
+}

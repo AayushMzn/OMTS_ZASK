@@ -3,9 +3,9 @@ package nccs.omts.model;
 public class Customers {
 	private int customer_id;
 	private String customer_name;
-	private int phone_num;
+	private String phone_num;
 	private String email;
-	public Customers(int customer_id, String customer_name, int phone_num, String email) {
+	public Customers(int customer_id, String customer_name, String phone_num, String email) {
 		super();
 		this.customer_id = customer_id;
 		this.customer_name = customer_name;
@@ -24,10 +24,10 @@ public class Customers {
 	public void setCustomer_name(String customer_name) {
 		this.customer_name = customer_name;
 	}
-	public int getPhone_num() {
+	public String getPhone_num() {
 		return phone_num;
 	}
-	public void setPhone_num(int phone_num) {
+	public void setPhone_num(String phone_num) {
 		this.phone_num = phone_num;
 	}
 	public String getEmail() {

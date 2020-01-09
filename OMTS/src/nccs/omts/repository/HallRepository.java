@@ -20,11 +20,4 @@ public class HallRepository {
 		}
 		return halls;
 	}
-	
-	public  void addTohall(int hall_id, String hall_name, int seats) throws SQLException {
-
-        Connection connection = DBconnection.getConnection();
-        Statement statement = connection.createStatement();
-        statement.executeUpdate("INSERT INTO hall values(" + hall_id + ", " + hall_name + ", " + seats + ")");
-    }
 }

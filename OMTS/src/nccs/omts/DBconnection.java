@@ -9,10 +9,10 @@ public class DBconnection {
 	
 	final static String subProtocol="mysql";
 	final static String host="//localhost";
-	final static String	port="3306"; 
+	final static String port="3306"; 
 	final static String database="omts";
 	final static String username="demon";
-	final static String	password="root";
+	final static String password="root";
 	
 	public static Connection getConnection() throws SQLException {
 		if (connection==null||connection.isClosed()) {
