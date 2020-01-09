@@ -1,0 +1,5 @@
+package nccs.omts.control;
+
+public class BookingController {
+		
+}
