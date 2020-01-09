@@ -1,0 +1,23 @@
+package nccs.omts.control;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import nccs.omts.model.*;
+import nccs.omts.repository.*;
+
+
+public class BookingController {
+	
+    List<Booking> selectedMovie = new ArrayList<>();
+    
+    public boolean addToBook(int movieId, int showId, Customers customer) throws SQLException {
+    	Hall hall = HallRepository.getHall(hallId);
+    	Movies movie = MoviesRepository.getMovie(movieId);
+        if (movie != null && hall.getSeats()>0) {
+            BookingRepository.addToBooking(showId, customer.getCustomer_id());
+            return true;
+        }
+        return false;
+    }
+}
