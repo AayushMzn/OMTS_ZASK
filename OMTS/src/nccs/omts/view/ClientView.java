@@ -6,6 +6,7 @@ import nccs.omts.control.*;
 import nccs.omts.repository.*;
 import nccs.omts.model.*;
 
+
 /**
  *
  * @author specter
@@ -31,28 +32,31 @@ public class ClientView {
         UserViewRepository userRepository = new UserViewRepository();
         List<UserView> user = userRepository.getUserView(a);
         System.out.println("Show id |\t movie name |\t  hall name |\t schedule");
-        System.out.println("---------------------------------------------------");
+        System.out.println("--------------------------------------------------------------------");
         for (UserView u : user) {
-            System.out.println(u.getShow_id()+"|\t"+u.getMovie_name()+"|\t"+u.getHall_name()+"|\t"+u.getSchedule_name());
+            System.out.println(u.getShow_id()+"\t|\t"+u.getMovie_name()+"\t|\t"+u.getHall_name()+"\t|\t"+u.getSchedule_name());
         }
     }
     public void movie(int id) throws SQLException {
         List<Movies> movie = MoviesRepository.getMoviesById(id);
     
-        System.out.println("Movie description:");
+        System.out.println("\n\n\nMovie description:");
+        System.out.println("---------------------------------------------------");
         for (Movies m : movie) {
-            System.out.println("Movie:"+m.getMovie_name());
-            System.out.println("Genre:"+m.getGenre_id());
-            System.out.println("Length:"+m.getLength()+" min");
-            System.out.println("Director:"+m.getDirector());
-            System.out.println("Casts:"+m.getCast());
-            System.out.println("Rating:"+m.getRating());
+            System.out.println("Movie:\t\t"+m.getMovie_name());
+            System.out.println("Genre:\t\t"+m.getGenre_id());
+            System.out.println("Length:\t\t"+m.getLength()+" min");
+            System.out.println("Director:\t"+m.getDirector());
+            System.out.println("Casts:\t\t"+m.getCast());
+            System.out.println("Rating:\t\t"+m.getRating());
         }
+        System.out.println("---------------------------------------------------");
+        System.out.println("---------------------------------------------------");
     }
 
     public void mainPage() throws SQLException {
-
-        System.out.println("Welcome " +customerController.getCurrentUser().getCustomer_name());
+       
+        System.out.println("\n\nWelcome " +customerController.getCurrentUser().getCustomer_name());
         Scanner scanner = new Scanner(System.in);
 
         int moviesId,showId;
@@ -78,10 +82,15 @@ public class ClientView {
                     System.out.println("Do you want to book this show?(y/n)");
                     book = scanner. next().charAt(0);
                     if(book=='y'||book=='Y'){
-                        /*if (showId != 0) {
-                            bookingController.addToBooking(showId, customerController.getCurrentUser());
-                        }*/
-                        System.out.println("Thank you for booking");
+                        if (showId != 0) {
+                            Shows show = ShowRepository.getShow(showId);
+                            Hall hall = HallRepository.getHall(show.getHall_id());
+                            int seat=hall.getSeats();
+                            seat--;
+                            
+                            bookingController.addToBook(showId,moviesId,customerController.getCurrentUser(), seat);
+                            System.out.println("Thank you for booking");  
+                        }
                     }
                     else{
                         return;
@@ -90,7 +99,6 @@ public class ClientView {
             }
         } while (true);
     }
-
     public boolean logIn() throws SQLException {
 
         Scanner scanner = new Scanner(System.in);

@@ -6,7 +6,7 @@ import nccs.omts.*;
 import nccs.omts.model.*;
 
 public class BookingRepository {
-	public List<Booking> getBooking() throws SQLException{
+	public static List<Booking> getBooking() throws SQLException{
 		Connection connection= DBconnection.getConnection();
 		Statement statement=connection.createStatement();
 		ResultSet rs=statement.executeQuery("Select * from booking");
@@ -19,11 +19,12 @@ public class BookingRepository {
 		return bookings;
 		
 	}
-		
-	public void addToBooking(int booking_id, int show_id, int customer_id) throws SQLException{
-			
-		Connection connection= DBconnection.getConnection();
-		Statement statement= connection.createStatement();
-		statement.executeUpdate("Insert into booking("+ booking_id+"," + show_id +"," +customer_id+ ")");
-	}
+	
+
+	public static void addToBooking(int show_id, int customer_id) throws SQLException{	
+            Connection connection= DBconnection.getConnection();
+            Statement statement= connection.createStatement();
+            statement.executeUpdate("Insert into booking (show_id,customer_id)values(" + show_id +"," +customer_id+ ")");
+            
+        }
 }

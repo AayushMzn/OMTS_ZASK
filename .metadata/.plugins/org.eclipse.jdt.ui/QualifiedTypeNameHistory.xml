@@ -13,4 +13,5 @@
 <fullyQualifiedTypeName name="nccs.omts.DBconnection"/>
 <fullyQualifiedTypeName name="nccs.omts.control.CustomersController"/>
 <fullyQualifiedTypeName name="nccs.omts.control.BookingController"/>
+<fullyQualifiedTypeName name="nccs.omts.repository.HallRepository"/>
 </qualifiedTypeNameHistroy>
