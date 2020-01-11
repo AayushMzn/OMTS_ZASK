@@ -18,7 +18,17 @@ public class MoviesRepository {
 		}
 		return movies;
 	}
-        
+	
+	 public static Movies getMovie(int movieId) throws SQLException {
+	        List<Movies> allmovie = getMovies();
+	        for (Movies movie : allmovie) {
+	            if (movie.getMovie_id() == movieId) {
+	                return movie;
+	            }
+	        }
+	        return null;
+	    }
+	 
         public static List<Movies> getMoviesById(int id) throws SQLException{
 		Connection connection = DBconnection.getConnection();
 		Statement statement=connection.createStatement();

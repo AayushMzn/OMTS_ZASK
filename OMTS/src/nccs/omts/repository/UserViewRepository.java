@@ -22,11 +22,11 @@ public class UserViewRepository {
     public static List<UserView> getUserView(int u) throws SQLException{
 		Connection connection = DBconnection.getConnection();
 		Statement statement=connection.createStatement();
-		ResultSet rs=statement.executeQuery("Select * from userview where show_id="+u);
+		ResultSet rs=statement.executeQuery("Select * from userview where movie_id="+u);
 		List<UserView> users=new ArrayList<>();
 		
 		while (rs.next()) {
-			UserView user = new UserView(rs.getInt(1) ,rs.getString(2), rs.getString(3), rs.getString(4));
+			UserView user = new UserView(rs.getInt(1) ,rs.getString(3), rs.getString(4), rs.getString(5));
 			users.add(user);
 		}
 		return users;

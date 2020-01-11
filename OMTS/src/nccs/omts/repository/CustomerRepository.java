@@ -19,10 +19,9 @@ public class CustomerRepository {
 		return customers;
 	}
 
-	public void addToCustomer(int customer_id,String customer_name,String email,int phone_num)throws SQLException{
+	public void addToCustomer(String customer_name,String email,String phone_num)throws SQLException{
 		Connection connection=DBconnection.getConnection();
 		Statement statement=connection.createStatement();
-		statement.executeUpdate("INSERT INTO customers values("+customer_id+","+customer_name+","+phone_num+","+email+")");
+		statement.executeUpdate("INSERT INTO customers(customer_name, phone_num, email) values("+customer_name+","+phone_num+","+email+")");
 	}
 }
-

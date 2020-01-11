@@ -9,9 +9,14 @@ public class OmtsMain {
 	  public static void main(String[] args) throws Exception {
 
 	        ClientView clientView = new ClientView();
-	        if (clientView.logIn()) {
-	            clientView.mainPage();
-	        }
+               //if(clientView.welcome()>0){
+                    if (clientView.logIn()) {
+                        clientView.mainPage();
+                    }
+                
+                //        }
+               
+                       
 	  }
 
 }

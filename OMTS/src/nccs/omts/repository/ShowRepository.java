@@ -6,7 +6,7 @@ import nccs.omts.*;
 import nccs.omts.model.*;
 
 public class ShowRepository {
-	public List<Shows> getShows() throws SQLException{
+	public static List<Shows> getShows() throws SQLException{
 		Connection connection = DBconnection.getConnection();
 		Statement statement=connection.createStatement();
 		ResultSet rs=statement.executeQuery("Select * from shows");
@@ -23,4 +23,13 @@ public class ShowRepository {
 		Statement statement =connection.createStatement();
 		statement.executeUpdate("INSERT INTO shows values(" + show_id +"," + hall_id + "," + movie_id + "," + schedule_id +")");
 	}
+	public static Shows getShow(int showId) throws SQLException {
+        List<Shows> allshow = getShows();
+        for (Shows show : allshow) {
+            if (show.getShow_id() == showId) {
+                return show;
+            }
+        }
+        return null;
+    }
 }

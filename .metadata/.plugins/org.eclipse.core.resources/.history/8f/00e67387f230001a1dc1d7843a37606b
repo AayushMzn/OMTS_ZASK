@@ -1,9 +1,0 @@
-package model;
-
-public class Transaction {
-	private int transactions_id;
-	private int	booking_id;
-	private int	customer_id;
-	private int transactions_date;
-	private int	price;
-}
