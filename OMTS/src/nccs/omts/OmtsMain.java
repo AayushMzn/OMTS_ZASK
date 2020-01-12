@@ -1,22 +1,15 @@
 package nccs.omts;
 
-import java.sql.*;
-import nccs.omts.repository.*;
-import nccs.omts.view.ClientView;
+
+import nccs.omts.view.*;
 
 public class OmtsMain {
 
 	  public static void main(String[] args) throws Exception {
-
-	        ClientView clientView = new ClientView();
-               //if(clientView.welcome()>0){
-                    if (clientView.logIn()) {
-                        clientView.mainPage();
-                    }
-                
-                //        }
-               
-                       
+                ViewPage vp =new ViewPage();
+                if(vp.bookticket()){   
+                     vp.firstPage();
+                }
 	  }
 
 }

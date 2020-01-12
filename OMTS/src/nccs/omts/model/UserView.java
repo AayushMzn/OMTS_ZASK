@@ -10,16 +10,30 @@ package nccs.omts.model;
  * @author Aayush
  */
 public class UserView {
+    private String date;
     private int show_id;
     private String movie_name;
     private String hall_name;
-    private String schedule_name;
+    private String shift_time;
+    private double price;
+    private int tickets_num;
 
-    public UserView(int show_id, String movie_name, String hall_name, String schedule_name) {
+    public UserView(String date, int show_id, String movie_name, String hall_name, String shift_time, double price, int tickets_num) {
+        this.date = date;
         this.show_id = show_id;
         this.movie_name = movie_name;
         this.hall_name = hall_name;
-        this.schedule_name = schedule_name;
+        this.shift_time = shift_time;
+        this.price = price;
+        this.tickets_num = tickets_num;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public int getShow_id() {
@@ -46,14 +60,29 @@ public class UserView {
         this.hall_name = hall_name;
     }
 
-    public String getSchedule_name() {
-        return schedule_name;
+    public String getShift_time() {
+        return shift_time;
     }
 
-    public void setSchedule_name(String schedule_name) {
-        this.schedule_name = schedule_name;
+    public void setShift_time(String shift_time) {
+        this.shift_time = shift_time;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public int getTickets_num() {
+        return tickets_num;
+    }
+
+    public void setTickets_num(int tickets_num) {
+        this.tickets_num = tickets_num;
+    }
     
     
 }

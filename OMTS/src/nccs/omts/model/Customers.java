@@ -2,39 +2,67 @@ package nccs.omts.model;
 
 public class Customers {
 	private int customer_id;
-	private String customer_name;
-	private String phone_num;
-	private String email;
-	public Customers(int customer_id, String customer_name, String phone_num, String email) {
-		super();
-		this.customer_id = customer_id;
-		this.customer_name = customer_name;
-		this.phone_num = phone_num;
-		this.email = email;
-	}
-	public int getCustomer_id() {
-		return customer_id;
-	}
-	public void setCustomer_id(int customer_id) {
-		this.customer_id = customer_id;
-	}
-	public String getCustomer_name() {
-		return customer_name;
-	}
-	public void setCustomer_name(String customer_name) {
-		this.customer_name = customer_name;
-	}
-	public String getPhone_num() {
-		return phone_num;
-	}
-	public void setPhone_num(String phone_num) {
-		this.phone_num = phone_num;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	
+	private String first_name;
+        private String last_name;
+	private long phone_no;
+	private String email_id;
+	private String password;
+
+    public Customers(int customer_id, String first_name, String last_name, long phone_no, String email_id, String password) {
+        this.customer_id = customer_id;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.phone_no = phone_no;
+        this.email_id = email_id;
+        this.password = password;
+    }
+
+    public int getCustomer_id() {
+        return customer_id;
+    }
+
+    public void setCustomer_id(int customer_id) {
+        this.customer_id = customer_id;
+    }
+
+    public String getFirst_name() {
+        return first_name;
+    }
+
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
+    }
+
+    public String getLast_name() {
+        return last_name;
+    }
+
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
+    }
+
+    public long getPhone_no() {
+        return phone_no;
+    }
+
+    public void setPhone_no(long phone_no) {
+        this.phone_no = phone_no;
+    }
+
+    public String getEmail_id() {
+        return email_id;
+    }
+
+    public void setEmail_id(String email_id) {
+        this.email_id = email_id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
 }

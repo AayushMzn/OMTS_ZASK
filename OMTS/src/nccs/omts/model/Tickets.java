@@ -1,32 +1,47 @@
 package nccs.omts.model;
 
 public class Tickets {
+        private int ticket_id;
 	private int booking_id;
-	private int no_of_tickets;
-	private int price;
-	public Tickets(int booking_id, int no_of_tickets, int price) {
-		super();
-		this.booking_id = booking_id;
-		this.no_of_tickets = no_of_tickets;
-		this.price = price;
-	}
-	public int getBooking_id() {
-		return booking_id;
-	}
-	public void setBooking_id(int booking_id) {
-		this.booking_id = booking_id;
-	}
-	public int getNo_of_tickets() {
-		return no_of_tickets;
-	}
-	public void setNo_of_tickets(int no_of_tickets) {
-		this.no_of_tickets = no_of_tickets;
-	}
-	public int getPrice() {
-		return price;
-	}
-	public void setPrice(int price) {
-		this.price = price;
-	}
-	
+	private double price;
+        private int status;
+
+    public Tickets(int ticket_id, int booking_id, double price, int status) {
+        this.ticket_id = ticket_id;
+        this.booking_id = booking_id;
+        this.price = price;
+        this.status = status;
+    }
+
+    public int getTicket_id() {
+        return ticket_id;
+    }
+
+    public void setTicket_id(int ticket_id) {
+        this.ticket_id = ticket_id;
+    }
+
+    public int getBooking_id() {
+        return booking_id;
+    }
+
+    public void setBooking_id(int booking_id) {
+        this.booking_id = booking_id;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 }

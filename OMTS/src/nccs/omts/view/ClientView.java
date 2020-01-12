@@ -15,6 +15,7 @@ public class ClientView {
 
     CustomersController customerController = new CustomersController();
     BookingController bookingController=new BookingController();
+    ViewPage vp=new ViewPage();
     
     public void movie() throws SQLException {
        
@@ -29,12 +30,23 @@ public class ClientView {
     
 
     public void user(int a) throws SQLException {
-        UserViewRepository userRepository = new UserViewRepository();
-        List<UserView> user = userRepository.getUserView(a);
-        System.out.println("Show id |\t movie name |\t  hall name |\t schedule");
-        System.out.println("--------------------------------------------------------------------");
-        for (UserView u : user) {
-            System.out.println(u.getShow_id()+"\t|\t"+u.getMovie_name()+"\t|\t"+u.getHall_name()+"\t|\t"+u.getSchedule_name());
+        
+        List<UserView> view = UserViewRepository.getViewPage(a);
+        
+        System.out.println("Date \t|\tShow id \t|\t movie name        \t|\t  hall name \t|\t shift     \t|\t price \t|\t seat left");
+        System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------");
+        for (UserView u : view) {
+            System.out.println(u.getDate()+"\t|\t"+u.getShow_id()+"\t|\t"+u.getMovie_name()+"\t|\t"+u.getHall_name()+"     \t|\t"+u.getShift_time()+"\t|\t"+u.getPrice()+"\t|\t"+u.getTickets_num());
+        }
+    }
+    public void userhall(int a) throws SQLException {
+        
+        List<UserView> view = UserViewRepository.getViewhall(a);
+        
+        System.out.println("Date \t|\tShow id \t|\t movie name        \t|\t  hall name \t|\t shift     \t|\t price \t|\t seat left");
+        System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------");
+        for (UserView u : view) {
+            System.out.println(u.getDate()+"\t|\t"+u.getShow_id()+"\t|\t"+u.getMovie_name()+"\t|\t"+u.getHall_name()+"     \t|\t"+u.getShift_time()+"\t|\t"+u.getPrice()+"\t|\t"+u.getTickets_num());
         }
     }
     public void movie(int id) throws SQLException {
@@ -53,10 +65,11 @@ public class ClientView {
         System.out.println("---------------------------------------------------");
         System.out.println("---------------------------------------------------");
     }
-
-    public void mainPage() throws SQLException {
+    
+    public void moviePage() throws SQLException {
+    
        
-        System.out.println("\n\nWelcome " +customerController.getCurrentUser().getCustomer_name());
+        System.out.println("\n\nWelcome ");
         Scanner scanner = new Scanner(System.in);
 
         int moviesId,showId;
@@ -83,12 +96,9 @@ public class ClientView {
                     book = scanner. next().charAt(0);
                     if(book=='y'||book=='Y'){
                         if (showId != 0) {
-                            Shows show = ShowRepository.getShow(showId);
-                            Hall hall = HallRepository.getHall(show.getHall_id());
-                            int seat=hall.getSeats();
-                            seat--;
                             
-                            bookingController.addToBook(showId,moviesId,customerController.getCurrentUser(), seat);
+                            
+                            bookingController.addToBook(showId,moviesId,customerController.getCurrentUser());
                             System.out.println("Thank you for booking");  
                         }
                     }
@@ -99,38 +109,61 @@ public class ClientView {
             }
         } while (true);
     }
-    public boolean logIn() throws SQLException {
-
+    public void hallPage() throws SQLException {
+       
+        System.out.println("\nWelcome ");
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Please login by your email: ");
-        String email = scanner.next();
-        return customerController.login(email);
 
+        int showId,hallId;
+        char book;
+        do {
+            hall();
+            System.out.print("Select a movie or 0 to Return :");
+            hallId = scanner.nextInt();
+            
+            
+
+            if (hallId == 0) {
+                return;
+            }
+            else{
+                
+                userhall(hallId);
+                System.out.print("Select a show or press 0 to return:");
+                showId = scanner.nextInt();
+                if (showId==0) {
+                    return;
+                }
+                else{
+                    
+                        System.out.println("Do you want to book this show?(y/n)");
+                        book = scanner. next().charAt(0);
+                        if(book=='y'||book=='Y'){
+                            if (showId != 0) {
+                                
+                            
+                                bookingController.addToBook(showId,hallId,customerController.getCurrentUser());
+                                System.out.println("Thank you for booking");  
+                            }
+                        }
+                        else{
+                            return;
+                        }
+                    
+                }
+            }
+        } while (true);
     }
     
-    /*    public int welcome() throws SQLException{
-    Scanner s=new Scanner(System.in);
-    CustomersController cus=new CustomersController();
-    System.out.println("Online Movie Ticketing System");
-    System.out.println("-----------------------------\n\n");
-    System.out.println("1.Sign in");
-    System.out.println("2.Sign up");
-    System.out.println("3.Exit");
-    System.out.println("Select :");
-    int c=s.nextInt();
-    switch(c){
-    case 1:
-    logIn();
-    break;
-    case 2:
-    cus.addTOcos();
-    break;
-    case 3:
-    return 0;
-    default:
-    System.out.println("Invalid choice:");
-    welcome();
+    public void hall() throws SQLException{
+        List<Hall> hall = HallRepository.getHall();
+
+        System.out.println("Hall ID : Hall Name");
+        for (Hall halls : hall) {
+            System.out.println(halls.getHall_id()+ "\t" + halls.getHall_name());
+        }
     }
-    return c;
-    }*/
+ 
+    
+   
 }

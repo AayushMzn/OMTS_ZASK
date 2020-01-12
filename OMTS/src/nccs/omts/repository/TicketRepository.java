@@ -13,7 +13,7 @@ public class TicketRepository {
 		List<Tickets> tickets=new ArrayList<>();
 		
 		while (rs.next()) {
-			Tickets ticket = new Tickets(rs.getInt(1), rs.getInt(2), rs.getInt(3));
+			Tickets ticket = new Tickets(rs.getInt(1), rs.getInt(2), rs.getDouble(3),rs.getInt(4));
 			tickets.add(ticket);
 		}
 		return tickets;

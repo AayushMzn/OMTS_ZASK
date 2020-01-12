@@ -5,71 +5,50 @@
  */
 package nccs.omts.view;
 
+import java.sql.SQLException;
 import java.util.*;
+import nccs.omts.control.CustomersController;
+
 /**
  *
  * @author N0_M3rcE
  */
 public class ViewPage {
     int choice;
-    Scanner s=new Scanner(System.in);
     
-    void airedmovie(){
-        
-    }
-    void mybooking(){
-        
-    }
-        
-    void bookticket(){
+    CustomersController customerController = new CustomersController();
+    
+    
+    public boolean logIn() throws SQLException {
+        Scanner s=new Scanner(System.in);
         String usr,pwd;
+        System.out.println("****Login to your account****");
+        System.out.print("\n\nUsername:");
+        usr=s.nextLine();
+        System.out.print("\nPassword:");
+        pwd=s.nextLine();
+        
+        return customerController.login(usr,pwd);
+    }
+        
+    public boolean bookticket() throws SQLException{
+        Scanner s=new Scanner(System.in);
         while(true){
-            System.out.print("Do you want to\n1. Sign in\n2. Create an account\n3. Go back");
+            System.out.print("****Login page****\n1. Sign in\n2. Create an account\n3. Go back\n\n");
+            System.out.println("enter a choice");
             choice=s.nextInt();
             switch(choice){
                 case 1:{
-                    System.out.println("****Login to your account****");
-                    System.out.print("\n\nUsername:");
-                    usr=s.nextLine();
-                    System.out.print("\nPassword:");
-                    pwd=s.nextLine();
-                    
-                    
-                    break;
+                    return logIn();
                 }
             
                 case 2:{
-                    String first_name,last_name,email_id,password,password1,contact; 
-                    int length,flag=0;
-                    
-                    System.out.println("****Create a new account****");
-                    System.out.print("\n\nFirst name:");
-                    first_name=s.nextLine();
-                    System.out.print("\nLast name:");
-                    last_name=s.nextLine();
-                    System.out.print("\nEmail-ID:");
-                    email_id=s.nextLine();
-                    System.out.print("\nNew Password:");
-                    password=s.nextLine();
-                    System.out.print("\nEnter the password again:");
-                    password1=s.nextLine();
-                    System.out.print("/nPhone number:");
-                    while(flag==0){
-                        System.out.print("Phone number:");
-                        contact=s.nextLine();
-                        length=contact.length();
-                        if(length!=10&&length!=7){
-                            System.out.print("Contact Invalid");
-                        }
-                        else{
-                            flag=1;
-                        }	
-                    }    
+                    customerController.addTOcos();
                     break;
                 }
                 
                 case 3:{
-                    FirstPage();
+                    firstPage();
                     break;
                 }
                 
@@ -81,37 +60,34 @@ public class ViewPage {
         
     }
     
-    void FirstPage(){
+    public void firstPage() throws SQLException{
+        Scanner s=new Scanner(System.in);
+        ClientView cv = new ClientView();
         while(true){
             
             System.out.println("********* Welcome to *********\nOnline Movie Ticketting System\n\n\n");
         
-            System.out.println("What would you like to do\n1.Airing Movies\n2. My Booking\n3. Book a ticket \n4. Exit OMTS");
+            System.out.println("What would you like to do\n1. Airing Movies\n2. Hall\n3.  Exit OMTS");
             System.out.print("\nEnter your choice:");
             
             choice=s.nextInt();
             switch(choice){
                 
                 case 1:{
-                    airedmovie();
-                    
+                    cv.moviePage();
                     break;
                 }
                 
                 case 2:{
-                    mybooking();
+                    cv.hallPage();
                     break;
                 }
                 
+               
                 case 3:{
-                    bookticket();
-                    break;
+                    System.exit(0);
                 }
                 
-                case 4:{
-                    System.exit(0);
-                    
-                }
                 
                 default:
                     System.out.print("Invalid Pick");

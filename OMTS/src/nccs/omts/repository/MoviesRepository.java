@@ -13,7 +13,7 @@ public class MoviesRepository {
 		List<Movies> movies=new ArrayList<>();
 		
 		while (rs.next()) {
-			Movies movie = new Movies(rs.getInt(1), rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getString(6),rs.getInt(7));
+			Movies movie = new Movies(rs.getInt(1), rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getString(6),rs.getInt(7),rs.getString(8));
 			movies.add(movie);
 		}
 		return movies;
@@ -36,9 +36,14 @@ public class MoviesRepository {
 		List<Movies> movies=new ArrayList<>();
 		
 		while (rs.next()) {
-			Movies movie = new Movies(rs.getInt(1), rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getString(6),rs.getInt(7));
+			Movies movie = new Movies(rs.getInt(1), rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getString(6),rs.getInt(7),rs.getString(8));
 			movies.add(movie);
 		}
 		return movies;
+           }
+                       
 	}
-}
+
+                
+	
+

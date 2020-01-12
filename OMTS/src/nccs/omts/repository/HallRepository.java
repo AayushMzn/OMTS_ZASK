@@ -30,4 +30,9 @@ public class HallRepository {
         }
         return null;
     }
+     public void addToHall(int hall_id,String hall_name, int seats)throws SQLException{
+		Connection connection=DBconnection.getConnection();
+		Statement statement=connection.createStatement();
+		statement.executeUpdate("INSERT INTO customers(hall_name,seats) values('"+hall_name+"',"+seats+");");
+	}
 }
